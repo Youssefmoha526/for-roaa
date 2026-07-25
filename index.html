@@ -17,31 +17,34 @@ font-family:'Cairo',sans-serif;
 }
 
 body{
-background:#090909;
+background:linear-gradient(135deg,#050505,#161616);
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+min-height:100vh;
 overflow:hidden;
 color:white;
+padding:20px;
 }
 
 .container{
-width:90%;
-max-width:650px;
+width:100%;
+max-width:420px;
 background:#111;
-border:2px solid #ff003c;
-padding:35px;
+border:2px solid crimson;
 border-radius:25px;
-box-shadow:0 0 40px #ff003c;
+padding:30px;
 text-align:center;
-animation:fade 1.2s;
+box-shadow:0 0 30px rgba(255,0,60,.6);
+position:relative;
+z-index:2;
+animation:show .8s ease;
 }
 
-@keyframes fade{
+@keyframes show{
 from{
 opacity:0;
-transform:scale(.8);
+transform:scale(.9);
 }
 to{
 opacity:1;
@@ -49,129 +52,134 @@ transform:scale(1);
 }
 }
 
+.logo{
+font-size:70px;
+margin-bottom:10px;
+animation:heart 1.3s infinite;
+}
+
+@keyframes heart{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.15);}
+}
+
 h1{
-font-size:40px;
-color:#ff2e63;
-margin-bottom:20px;
+color:#ff2d55;
+margin-bottom:15px;
+font-size:32px;
 }
 
 p{
-font-size:21px;
 line-height:2;
+color:#ddd;
+font-size:18px;
 margin-bottom:15px;
 }
 
-button{
-
+.dev{
 margin-top:20px;
-padding:15px 40px;
-font-size:22px;
-border:none;
-border-radius:40px;
-cursor:pointer;
-background:#ff003c;
-color:white;
-transition:.3s;
+padding:15px;
+border-radius:15px;
+background:#1b1b1b;
+border:1px solid #333;
+font-size:15px;
+color:#bbb;
+}
 
+button{
+margin-top:25px;
+width:100%;
+padding:16px;
+font-size:20px;
+border:none;
+border-radius:15px;
+background:crimson;
+color:white;
+cursor:pointer;
+transition:.3s;
 }
 
 button:hover{
-
-transform:scale(1.07);
-
-box-shadow:0 0 30px red;
-
+transform:scale(1.03);
+box-shadow:0 0 20px crimson;
 }
 
-.footer{
-
-margin-top:30px;
-font-size:17px;
-color:#ddd;
-
+button:active{
+transform:scale(.98);
 }
 
 .heart{
-
 position:absolute;
-
-color:#ff2e63;
-
+top:-30px;
+color:#ff2d55;
+font-size:25px;
 animation:fall linear infinite;
-
+pointer-events:none;
 }
 
 @keyframes fall{
-
 0%{
 transform:translateY(-100px);
 opacity:1;
 }
-
 100%{
-transform:translateY(110vh);
+transform:translateY(120vh);
 opacity:0;
+}
+}
+
+@media(max-width:600px){
+
+.container{
+padding:22px;
+}
+
+h1{
+font-size:28px;
+}
+
+p{
+font-size:16px;
+}
+
+button{
+font-size:18px;
+padding:15px;
 }
 
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>❤️ Welcome, Roaa ❤️</h1>
+<div class="logo">❤️</div>
+
+<h1>يا رؤى 🌹</h1>
 
 <p>
-
-تم تصميم التجربة دي مخصوص ليكي... ❤️
-
+عملتلك حاجة صغيرة...
+يمكن متبقاش أكبر هدية،
+بس اتعملت بكل حب مخصوص ليكي. ❤️
 </p>
 
 <p>
-
-دي مش مجرد صفحة...
-ولا مجرد اختبار...
-
-دي هدية صغيرة اتعملت بكل حب،
-علشان ترسملك ابتسامة. 🥹
-
+قدامك اختبار بسيط عن ذكرياتنا سوا...
+ولو جاوبتي كل الأسئلة صح،
+هتوصلي لهدية مخبية ليكي. 🎁
 </p>
 
-<p>
-
-كل تفصيلة هنا...
-اتعملت بإيد شخص بيهتم بيكي جدًا.
-
-</p>
-
-<h2 style="margin-top:25px;color:#ff4d6d;">
-
-🖥️ Developed with ❤️ by
-
-<br><br>
-
-Youssef Mohammed
-
-</h2>
-
-<div class="footer">
-
-Version 1.0
-
-<br>
-
-Private Build For Roaa ❤️
-
+<div class="dev">
+🖥️ تم تصميم التجربة دي بالكامل بواسطة<br><br>
+<b>Youssef Mohammed</b><br><br>
+Private Build • Version 2.0
 </div>
 
 <button onclick="window.location='quiz.html'">
-
-ابدئي الاختبار ❤️
-
+🚀 ابدأي الاختبار
 </button>
 
 </div>
@@ -180,25 +188,23 @@ Private Build For Roaa ❤️
 
 function createHeart(){
 
-let h=document.createElement("div");
+let heart=document.createElement("div");
 
-h.className="heart";
+heart.className="heart";
 
-h.innerHTML="❤️";
+heart.innerHTML="❤️";
 
-h.style.left=Math.random()*100+"vw";
+heart.style.left=Math.random()*100+"vw";
 
-h.style.fontSize=(20+Math.random()*30)+"px";
+heart.style.animationDuration=(3+Math.random()*5)+"s";
 
-h.style.animationDuration=(3+Math.random()*5)+"s";
+heart.style.fontSize=(20+Math.random()*25)+"px";
 
-document.body.appendChild(h);
+document.body.appendChild(heart);
 
 setTimeout(()=>{
-
-h.remove();
-
-},7000);
+heart.remove();
+},8000);
 
 }
 
