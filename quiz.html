@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎁 هدية خاصة لرؤى ❤️</title>
+
+<title>❤️ Love Quiz ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
@@ -18,74 +20,141 @@ font-family:'Cairo',sans-serif;
 
 body{
 
-background:#050505;
+background:linear-gradient(135deg,#050505,#151515);
+
 color:white;
+
 display:flex;
+
 justify-content:center;
+
 align-items:center;
-height:100vh;
+
+min-height:100vh;
+
+padding:20px;
+
 overflow:hidden;
 
 }
 
-.loader{
+.container{
 
-text-align:center;
+width:100%;
+
+max-width:500px;
+
+background:#111;
+
+border:2px solid crimson;
+
+border-radius:20px;
+
+padding:25px;
+
+box-shadow:0 0 30px crimson;
+
+animation:show .8s;
+
+position:relative;
+
+z-index:2;
 
 }
 
-.loader h1{
+@keyframes show{
+
+from{
+
+opacity:0;
+
+transform:scale(.9);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+h1{
+
+text-align:center;
+
+margin-bottom:10px;
 
 color:#ff2d55;
+
+}
+
+.info{
+
+text-align:center;
+
+margin-bottom:20px;
+
+color:#ddd;
+
+line-height:1.8;
+
+}
+
+.progress{
+
+width:100%;
+
+height:12px;
+
+background:#333;
+
+border-radius:30px;
+
+overflow:hidden;
+
 margin-bottom:25px;
 
 }
 
 .bar{
 
-width:350px;
-height:18px;
-background:#222;
-border-radius:50px;
-overflow:hidden;
-margin:auto;
-
-}
-
-.progress{
-
 width:0%;
+
 height:100%;
-background:linear-gradient(90deg,#ff003c,#ff4d6d,#ff8800);
-transition:.08s;
+
+background:linear-gradient(90deg,#ff003c,#ff6b6b);
+
+transition:.4s;
 
 }
 
-#percent{
-
-margin-top:20px;
-font-size:22px;
-
-}
-
-#message{
-
-display:none;
-
-width:90%;
-max-width:700px;
-
-background:#111;
-
-padding:35px;
-
-border-radius:20px;
-
-box-shadow:0 0 35px crimson;
+.counter{
 
 text-align:center;
 
-animation:fade 1s;
+margin-bottom:20px;
+
+font-size:18px;
+
+color:#bbb;
+
+}
+
+.question{
+
+display:none;
+
+animation:fade .5s;
+
+}
+
+.question.active{
+
+display:block;
 
 }
 
@@ -94,53 +163,92 @@ animation:fade 1s;
 from{
 
 opacity:0;
-transform:scale(.8);
+
+transform:translateX(20px);
 
 }
 
 to{
 
 opacity:1;
-transform:scale(1);
+
+transform:translateX(0);
 
 }
 
 }
 
-h2{
-
-color:#ff4d6d;
+.question h2{
 
 margin-bottom:20px;
 
-}
-
-.type{
+color:#ff5c7c;
 
 font-size:22px;
-line-height:2;
-white-space:pre-line;
-min-height:260px;
+
+}
+
+.option{
+
+display:block;
+
+padding:15px;
+
+margin:12px 0;
+
+background:#1b1b1b;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:.3s;
+
+border:2px solid transparent;
+
+}
+
+.option:hover{
+
+background:#292929;
+
+border-color:crimson;
+
+}
+
+.option input{
+
+margin-left:8px;
+
+}
+
+.buttons{
+
+display:flex;
+
+gap:10px;
+
+margin-top:25px;
 
 }
 
 button{
 
-margin-top:25px;
+flex:1;
 
-padding:15px 35px;
+padding:15px;
 
-font-size:20px;
-
-background:crimson;
+font-size:18px;
 
 border:none;
 
-border-radius:15px;
-
-color:white;
+border-radius:12px;
 
 cursor:pointer;
+
+background:crimson;
+
+color:white;
 
 transition:.3s;
 
@@ -148,19 +256,15 @@ transition:.3s;
 
 button:hover{
 
-transform:scale(1.05);
-
-box-shadow:0 0 20px crimson;
+transform:scale(1.03);
 
 }
 
-#last{
+button:disabled{
 
-display:none;
+opacity:.5;
 
-margin-top:30px;
-
-animation:fade 1s;
+cursor:not-allowed;
 
 }
 
@@ -168,9 +272,11 @@ animation:fade 1s;
 
 position:absolute;
 
-font-size:30px;
+color:#ff2d55;
 
 animation:fall linear infinite;
+
+pointer-events:none;
 
 }
 
@@ -186,9 +292,45 @@ opacity:1;
 
 100%{
 
-transform:translateY(110vh);
+transform:translateY(120vh);
 
 opacity:0;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.container{
+
+padding:18px;
+
+}
+
+h1{
+
+font-size:28px;
+
+}
+
+.question h2{
+
+font-size:20px;
+
+}
+
+.option{
+
+font-size:15px;
+
+padding:13px;
+
+}
+
+button{
+
+font-size:17px;
 
 }
 
@@ -200,164 +342,349 @@ opacity:0;
 
 <body>
 
-<div class="loader">
+<div class="container">
 
-<h1>🔒 Decrypting Secret Gift...</h1>
+<h1>❤️ Love Quiz ❤️</h1>
 
-<div class="bar">
+<div class="info">
+يا رؤى... جاوبي على كل سؤال صح علشان توصلي لهديتك. 🎁❤️
+</div>
 
-<div class="progress" id="progress"></div>
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<div class="counter" id="counter">
+السؤال 1 من 6
+</div>
+
+<form id="quiz">
+<div class="question active">
+
+<h2>1️⃣ تاريخ ميلادي؟</h2>
+
+<label class="option">
+<input type="radio" name="q1" value="0">
+8 يونيو 2010
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="1">
+6 أغسطس 2010
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="0">
+16 أغسطس 2010
+</label>
+
+<label class="option">
+<input type="radio" name="q1" value="0">
+6 أغسطس 2009
+</label>
 
 </div>
 
-<div id="percent">
+<div class="question">
 
-0%
+<h2>2️⃣ رقم تليفوني؟</h2>
 
-</div>
+<label class="option">
+<input type="radio" name="q2" value="0">
+01067549795
+</label>
+  <script>
 
-</div>
+const questions = document.querySelectorAll(".question");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+const counter = document.getElementById("counter");
+const bar = document.getElementById("bar");
 
-<div id="message">
+let current = 0;
 
-<h2>🎉 مبروك يا رؤى ❤️</h2>
+function updateUI(){
 
-<p class="type" id="typing"></p>
+questions.forEach((q,i)=>{
 
-<button onclick="lastGift()">
+q.classList.toggle("active",i===current);
 
-💌 افتحي آخر مفاجأة
+});
 
-</button>
+counter.innerHTML=`السؤال ${current+1} من 6`;
 
-<div id="last">
+bar.style.width=((current+1)/6*100)+"%";
 
-<h1 style="color:#ff2d55;font-size:45px;">
+prevBtn.disabled=(current===0);
 
-❤️ يوسف × رؤى ❤️
-
-</h1>
-
-<h2>
-
-Forever ♾️
-
-</h2>
-
-<p style="font-size:25px;margin-top:20px;">
-
-I LOVE YOU SO MUCH ❤️
-
-</p>
-
-<p style="margin-top:20px;color:#ccc;">
-
-Designed & Developed with ❤️ by<br>
-
-Youssef Mohammed
-
-</p>
-
-</div>
-
-</div>
-
-<script>let progress = 0;
-
-const bar = document.getElementById("progress");
-const percent = document.getElementById("percent");
-const loader = document.querySelector(".loader");
-const message = document.getElementById("message");
-const typing = document.getElementById("typing");
-
-const text = `لو وصلتي لهنا...
-يبقى فعلًا تعرفيني كويس جدًا. ❤️
-
-يمكن الاختبار كان مجرد 6 أسئلة...
-لكن بالنسبة ليا كل سؤال كان وراه ذكرى جميلة بينا.
-
-شكراً إنك خدتي وقتك ولعبتي الاختبار.
-
-وجودك في حياتي من أحلى الحاجات اللي حصلتلي،
-وبتمنى أشوف ضحكتك كل يوم.
-
-ربنا يديمك في حياتي يا رؤى. ❤️🌹
-
-يمكن الكلام ميكفيش...
-بس بجد...
-
-بحبك جدًا. ❤️`;
-
-let i = 0;
-
-const loading = setInterval(function(){
-
-progress++;
-
-bar.style.width = progress + "%";
-percent.innerHTML = progress + "%";
-
-if(progress >= 100){
-
-clearInterval(loading);
-
-loader.style.display = "none";
-
-message.style.display = "block";
-
-typeWriter();
+nextBtn.innerHTML=(current===5)?"🎁 إنهاء الاختبار":"التالي ➜";
 
 }
 
-},35);
+nextBtn.onclick=function(){
 
-function typeWriter(){
+let checked=document.querySelector(`input[name="q${current+1}"]:checked`);
 
-if(i < text.length){
+if(!checked){
 
-typing.innerHTML += text.charAt(i);
+alert("🥺 جاوبي على السؤال الأول يا رؤى ❤️");
 
-i++;
+return;
 
-setTimeout(typeWriter,40);
+}
+
+if(current<5){
+
+current++;
+
+updateUI();
+
+}else{
+
+finishQuiz();
 
 }
 
 }
 
-function lastGift(){
+prevBtn.onclick=function(){
 
-document.getElementById("last").style.display="block";
+if(current>0){
+
+current--;
+
+updateUI();
 
 }
+
+}
+
+function finishQuiz(){
+
+let score=0;
+
+for(let i=1;i<=6;i++){
+
+let ans=document.querySelector(`input[name="q${i}"]:checked`);
+
+if(ans && ans.value=="1") score++;
+
+}
+
+let wrong=6-score;
+
+if(score===6){
+
+localStorage.setItem("score","6");
+
+window.location="success.html";
+
+return;
+
+}
+
+let text="";
+
+if(score==5){
+
+text="🥹 يا رؤى...\n\n⭐ نتيجتك: 5 / 6\n❌ غلطتي في سؤال واحد بس.\n\nقربتي جدًا من الهدية ❤️";
+
+}else if(score>=3){
+
+text=`😊 يا رؤى...\n\n⭐ نتيجتك: ${score} / 6\n❌ غلطتي في ${wrong} أسئلة.\n\nراجعي ذكرياتنا شوية وهتوصلي للهدية ❤️`;
+
+}else{
+
+text=`😂 يا رؤى...\n\n⭐ نتيجتك: ${score} / 6\n❌ غلطتي في ${wrong} أسئلة.\n\nواضح إنك ناسية ذكرياتنا شوية 🤭❤️`;
+
+}
+
+if(confirm(text+"\n\n🔄 هل تحبي تعيدي الاختبار؟")){
+
+document.getElementById("quiz").reset();
+
+current=0;
+
+updateUI();
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+}
+
+}
+
+updateUI();
 
 function createHeart(){
 
-let heart=document.createElement("div");
+let h=document.createElement("div");
 
-heart.className="heart";
+h.className="heart";
 
-heart.innerHTML="❤️";
+h.innerHTML="❤️";
 
-heart.style.left=Math.random()*100+"vw";
+h.style.left=Math.random()*100+"vw";
 
-heart.style.fontSize=(20+Math.random()*25)+"px";
+h.style.fontSize=(20+Math.random()*20)+"px";
 
-heart.style.animationDuration=(3+Math.random()*5)+"s";
+h.style.animationDuration=(3+Math.random()*4)+"s";
 
-document.body.appendChild(heart);
+document.body.appendChild(h);
 
-setTimeout(function(){
+setTimeout(()=>{
 
-heart.remove();
+h.remove();
 
-},8000);
+},7000);
 
 }
 
-setInterval(createHeart,250);
+setInterval(createHeart,300);
 
 </script>
 
 </body>
 </html>
+
+<label class="option">
+<input type="radio" name="q2" value="0">
+01067549756
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="1">
+01067549765
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="0">
+01067549675
+</label>
+
+</div>
+
+<div class="question">
+
+<h2>3️⃣ ارتبطنا يوم كام؟</h2>
+
+<label class="option">
+<input type="radio" name="q3" value="0">
+12 مايو
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="1">
+13 مايو
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="0">
+15 مايو
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="0">
+20 مايو
+</label>
+
+</div>
+
+<div class="question">
+
+<h2>4️⃣ اسمي الثلاثي؟</h2>
+
+<label class="option">
+<input type="radio" name="q4" value="0">
+يوسف أحمد رمضان
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="0">
+يوسف محمد أحمد
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="1">
+يوسف محمد رمضان
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="0">
+يوسف رمضان محمد
+</label>
+
+</div>
+
+<div class="question">
+
+<h2>5️⃣ إيه أول حاجة شدتني ليكي؟</h2>
+
+<label class="option">
+<input type="radio" name="q5" value="0">
+شخصيتك
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="0">
+شكلك
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="0">
+صوتك
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="1">
+جميع ما سبق ❤️
+</label>
+
+</div>
+
+<div class="question">
+
+<h2>6️⃣ إيه لوني المفضل؟</h2>
+
+<label class="option">
+<input type="radio" name="q6" value="0">
+أبيض
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="0">
+أزرق
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="1">
+🖤 أسود وأحمر ❤️
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="0">
+بنفسجي
+</label>
+
+</div>
+
+<div class="buttons">
+
+<button type="button" id="prev" disabled>
+⬅ السابق
+</button>
+
+<button type="button" id="next">
+التالي ➡
+</button>
+
+</div>
+
+</form>
+
+</div>
