@@ -22,7 +22,7 @@ font-family:'Cairo',sans-serif;
 
 body{
 
-background:#050505;
+background:linear-gradient(135deg,#050505,#141414);
 
 color:white;
 
@@ -32,15 +32,21 @@ justify-content:center;
 
 align-items:center;
 
-height:100vh;
+min-height:100vh;
 
-overflow:hidden;
+padding:20px;
+
+overflow-x:hidden;
 
 }
 
 .loader{
 
 text-align:center;
+
+width:100%;
+
+max-width:500px;
 
 }
 
@@ -50,11 +56,13 @@ color:#ff2d55;
 
 margin-bottom:25px;
 
+font-size:clamp(22px,5vw,35px);
+
 }
 
 .bar{
 
-width:350px;
+width:100%;
 
 height:18px;
 
@@ -65,6 +73,8 @@ border-radius:50px;
 overflow:hidden;
 
 margin:auto;
+
+box-shadow:0 0 10px #000 inset;
 
 }
 
@@ -86,27 +96,31 @@ margin-top:20px;
 
 font-size:22px;
 
+font-weight:bold;
+
 }
 
 #message{
 
 display:none;
 
-width:90%;
+width:100%;
 
-max-width:700px;
+max-width:750px;
 
 background:#111;
 
-padding:35px;
+padding:30px;
 
-border-radius:20px;
+border-radius:25px;
 
-box-shadow:0 0 30px crimson;
+border:2px solid crimson;
+
+box-shadow:0 0 40px rgba(255,0,60,.5);
 
 text-align:center;
 
-animation:fade 1.2s;
+animation:fade .8s;
 
 }
 
@@ -116,7 +130,7 @@ from{
 
 opacity:0;
 
-transform:scale(.8);
+transform:scale(.9);
 
 }
 
@@ -140,11 +154,13 @@ margin-bottom:20px;
 
 .type{
 
-font-size:22px;
+font-size:clamp(18px,4vw,24px);
 
 line-height:2;
 
 white-space:pre-line;
+
+min-height:220px;
 
 }
 
@@ -152,7 +168,7 @@ button{
 
 margin-top:30px;
 
-padding:15px 35px;
+padding:16px 35px;
 
 font-size:20px;
 
@@ -166,19 +182,43 @@ color:white;
 
 cursor:pointer;
 
+transition:.3s;
+
+box-shadow:0 0 20px crimson;
+
 }
 
 button:hover{
 
 transform:scale(1.05);
 
+box-shadow:0 0 35px crimson;
+
+}
+
+button:active{
+
+transform:scale(.96);
+
+}
+
+#last{
+
+display:none;
+
+margin-top:35px;
+
+animation:fade 1s;
+
 }
 
 .heart{
 
-position:absolute;
+position:fixed;
 
 font-size:30px;
+
+pointer-events:none;
 
 animation:fall linear infinite;
 
@@ -196,9 +236,25 @@ opacity:1;
 
 100%{
 
-transform:translateY(110vh);
+transform:translateY(120vh);
 
 opacity:0;
+
+}
+
+}
+
+@media(max-width:600px){
+
+#message{
+
+padding:20px;
+
+}
+
+button{
+
+width:100%;
 
 }
 
@@ -220,17 +276,13 @@ opacity:0;
 
 </div>
 
-<div id="percent">
-
-0%
-
-</div>
+<div id="percent">0%</div>
 
 </div>
 
 <div id="message">
 
-<h2>🎉 مبروك يا رؤى ❤️</h2>
+<h2>🎉 مبروك ❤️</h2>
 
 <p class="type" id="typing"></p>
 
@@ -240,20 +292,190 @@ opacity:0;
 
 </button>
 
-<div id="last" style="display:none;margin-top:30px;">
+<div id="last">
 
-<h1 style="color:#ff2d55;">
+<h1 style="color:#ff2d55;font-size:42px;">
+
 ❤️ يوسف × رؤى ❤️
+
 </h1>
 
-<h2>
-Forever ♾️
-</h2>
+<h2>Forever ♾️</h2>
 
-<p style="font-size:23px;margin-top:20px;">
+<p style="font-size:24px;margin-top:20px;">
 I LOVE YOU ❤️
+</p>
+
+<p style="margin-top:20px;color:#bbb;">
+Designed & Developed by<br>
+<b>Youssef Mohammed</b>
 </p>
 
 </div>
 
 </div>
+
+<script>
+
+let progress=0;
+
+const bar=document.getElementById("progress");
+
+const percent=document.getElementById("percent");
+
+const loader=document.querySelector(".loader");
+
+const message=document.getElementById("message");
+
+const typing=document.getElementById("typing");
+
+/* ===========================
+   اكتب رسالتك هنا
+=========================== */
+const text = `لو وصلتي لهنا...
+يبقى فعلًا تعرفيني كويس جدًا. ❤️
+
+يمكن الاختبار كان مجرد 6 أسئلة...
+لكن بالنسبة ليا كل سؤال كان وراه ذكرى جميلة بينا.
+
+شكراً إنك خدتي وقتك ولعبتي الاختبار.
+
+وجودك في حياتي من أحلى الحاجات اللي حصلتلي،
+وبتمنى أشوف ضحكتك كل يوم.
+
+ربنا يديمك في حياتي يا رؤى. ❤️🌹
+
+يمكن الكلام ميكفيش...
+بس بجد...
+
+بحبك جدًا. ❤️`;
+
+/* =========================== */
+
+let i=0;
+const loading=setInterval(function(){
+
+progress++;
+
+bar.style.width=progress+"%";
+percent.innerHTML=progress+"%";
+
+if(progress>=100){
+
+clearInterval(loading);
+
+setTimeout(function(){
+
+loader.style.display="none";
+message.style.display="block";
+
+typeWriter();
+
+for(let i=0;i<120;i++){
+
+setTimeout(createConfetti,i*40);
+
+}
+
+},500);
+
+}
+
+},30);
+
+function typeWriter(){
+
+if(i<text.length){
+
+typing.innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typeWriter,35);
+
+}
+
+}
+
+function lastGift(){
+
+let last=document.getElementById("last");
+
+last.style.display="block";
+
+last.style.opacity="0";
+last.style.transform="translateY(20px)";
+
+setTimeout(function(){
+
+last.style.transition=".8s";
+
+last.style.opacity="1";
+
+last.style.transform="translateY(0)";
+
+},50);
+
+}
+
+function createHeart(){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(20+Math.random()*25)+"px";
+
+heart.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(function(){
+
+heart.remove();
+
+},8000);
+
+}
+
+setInterval(createHeart,450);
+
+function createConfetti(){
+
+let c=document.createElement("div");
+
+const shapes=["🎉","✨","❤️","🎊"];
+
+c.innerHTML=shapes[Math.floor(Math.random()*shapes.length)];
+
+c.style.position="fixed";
+
+c.style.left=Math.random()*100+"vw";
+
+c.style.top="-40px";
+
+c.style.fontSize=(18+Math.random()*18)+"px";
+
+c.style.pointerEvents="none";
+
+c.style.animation="fall "+(2+Math.random()*3)+"s linear";
+
+document.body.appendChild(c);
+
+setTimeout(function(){
+
+c.remove();
+
+},5000);
+
+}
+
+</script>
+
+</body>
+
+</html>
