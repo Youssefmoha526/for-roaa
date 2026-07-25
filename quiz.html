@@ -358,8 +358,7 @@ font-size:17px;
 السؤال 1 من 6
 </div>
 
-<form id="quiz">
-<div class="question active">
+<form id="quiz"><div class="question active">
 
 <h2>1️⃣ تاريخ ميلادي؟</h2>
 
@@ -393,7 +392,143 @@ font-size:17px;
 <input type="radio" name="q2" value="0">
 01067549795
 </label>
-  <script>
+
+<label class="option">
+<input type="radio" name="q2" value="0">
+01067549756
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="1">
+01067549765
+</label>
+
+<label class="option">
+<input type="radio" name="q2" value="0">
+01067549675
+</label>
+
+</div>
+
+<div class="question">
+
+<h2>3️⃣ ارتبطنا يوم كام؟</h2>
+
+<label class="option">
+<input type="radio" name="q3" value="0">
+12 مايو
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="1">
+13 مايو
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="0">
+15 مايو
+</label>
+
+<label class="option">
+<input type="radio" name="q3" value="0">
+20 مايو
+</label>
+
+</div>
+
+<div class="question">
+
+<h2>4️⃣ اسمي الثلاثي؟</h2>
+
+<label class="option">
+<input type="radio" name="q4" value="0">
+يوسف أحمد رمضان
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="0">
+يوسف محمد أحمد
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="1">
+يوسف محمد رمضان
+</label>
+
+<label class="option">
+<input type="radio" name="q4" value="0">
+يوسف رمضان محمد
+</label>
+
+</div>
+
+<div class="question">
+
+<h2>5️⃣ إيه أول حاجة شدتني ليكي؟</h2>
+
+<label class="option">
+<input type="radio" name="q5" value="0">
+شخصيتك
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="0">
+شكلك
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="0">
+صوتك
+</label>
+
+<label class="option">
+<input type="radio" name="q5" value="1">
+جميع ما سبق ❤️
+</label>
+
+</div>
+
+<div class="question">
+
+<h2>6️⃣ إيه لوني المفضل؟</h2>
+
+<label class="option">
+<input type="radio" name="q6" value="0">
+أبيض
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="0">
+أزرق
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="1">
+🖤 أسود وأحمر ❤️
+</label>
+
+<label class="option">
+<input type="radio" name="q6" value="0">
+بنفسجي
+</label>
+
+</div>
+
+<div class="buttons">
+
+<button type="button" id="prev" disabled>
+⬅ السابق
+</button>
+
+<button type="button" id="next">
+التالي ➡
+</button>
+
+</div>
+
+</form>
+
+</div><script>
 
 const questions = document.querySelectorAll(".question");
 const nextBtn = document.getElementById("next");
@@ -551,140 +686,3 @@ setInterval(createHeart,300);
 
 </body>
 </html>
-
-<label class="option">
-<input type="radio" name="q2" value="0">
-01067549756
-</label>
-
-<label class="option">
-<input type="radio" name="q2" value="1">
-01067549765
-</label>
-
-<label class="option">
-<input type="radio" name="q2" value="0">
-01067549675
-</label>
-
-</div>
-
-<div class="question">
-
-<h2>3️⃣ ارتبطنا يوم كام؟</h2>
-
-<label class="option">
-<input type="radio" name="q3" value="0">
-12 مايو
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="1">
-13 مايو
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="0">
-15 مايو
-</label>
-
-<label class="option">
-<input type="radio" name="q3" value="0">
-20 مايو
-</label>
-
-</div>
-
-<div class="question">
-
-<h2>4️⃣ اسمي الثلاثي؟</h2>
-
-<label class="option">
-<input type="radio" name="q4" value="0">
-يوسف أحمد رمضان
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="0">
-يوسف محمد أحمد
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="1">
-يوسف محمد رمضان
-</label>
-
-<label class="option">
-<input type="radio" name="q4" value="0">
-يوسف رمضان محمد
-</label>
-
-</div>
-
-<div class="question">
-
-<h2>5️⃣ إيه أول حاجة شدتني ليكي؟</h2>
-
-<label class="option">
-<input type="radio" name="q5" value="0">
-شخصيتك
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="0">
-شكلك
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="0">
-صوتك
-</label>
-
-<label class="option">
-<input type="radio" name="q5" value="1">
-جميع ما سبق ❤️
-</label>
-
-</div>
-
-<div class="question">
-
-<h2>6️⃣ إيه لوني المفضل؟</h2>
-
-<label class="option">
-<input type="radio" name="q6" value="0">
-أبيض
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="0">
-أزرق
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="1">
-🖤 أسود وأحمر ❤️
-</label>
-
-<label class="option">
-<input type="radio" name="q6" value="0">
-بنفسجي
-</label>
-
-</div>
-
-<div class="buttons">
-
-<button type="button" id="prev" disabled>
-⬅ السابق
-</button>
-
-<button type="button" id="next">
-التالي ➡
-</button>
-
-</div>
-
-</form>
-
-</div>
