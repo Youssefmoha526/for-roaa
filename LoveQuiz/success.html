@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>🎁 Your Gift</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
+body{
+
+background:#050505;
+
+color:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+overflow:hidden;
+
+}
+
+.loader{
+
+text-align:center;
+
+}
+
+.loader h1{
+
+color:#ff2d55;
+
+margin-bottom:25px;
+
+}
+
+.bar{
+
+width:350px;
+
+height:18px;
+
+background:#222;
+
+border-radius:50px;
+
+overflow:hidden;
+
+margin:auto;
+
+}
+
+.progress{
+
+width:0%;
+
+height:100%;
+
+background:linear-gradient(90deg,#ff003c,#ff4d6d,#ff8800);
+
+transition:.08s;
+
+}
+
+#percent{
+
+margin-top:20px;
+
+font-size:22px;
+
+}
+
+#message{
+
+display:none;
+
+width:90%;
+
+max-width:700px;
+
+background:#111;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 0 30px crimson;
+
+text-align:center;
+
+animation:fade 1.2s;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:scale(.8);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+h2{
+
+color:#ff4d6d;
+
+margin-bottom:20px;
+
+}
+
+.type{
+
+font-size:22px;
+
+line-height:2;
+
+white-space:pre-line;
+
+}
+
+button{
+
+margin-top:30px;
+
+padding:15px 35px;
+
+font-size:20px;
+
+background:crimson;
+
+border:none;
+
+border-radius:15px;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+transform:scale(1.05);
+
+}
+
+.heart{
+
+position:absolute;
+
+font-size:30px;
+
+animation:fall linear infinite;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:translateY(-100px);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(110vh);
+
+opacity:0;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="loader">
+
+<h1>🔒 Decrypting Secret Gift...</h1>
+
+<div class="bar">
+
+<div class="progress" id="progress"></div>
+
+</div>
+
+<div id="percent">
+
+0%
+
+</div>
+
+</div>
+
+<div id="message">
+
+<h2>🎉 مبروك يا رؤى ❤️</h2>
+
+<p class="type" id="typing"></p>
+
+<button onclick="lastGift()">
+
+💌 افتحي آخر مفاجأة
+
+</button>
+
+<div id="last" style="display:none;margin-top:30px;">
+
+<h1 style="color:#ff2d55;">
+❤️ يوسف × رؤى ❤️
+</h1>
+
+<h2>
+Forever ♾️
+</h2>
+
+<p style="font-size:23px;margin-top:20px;">
+I LOVE YOU ❤️
+</p>
+
+</div>
+
+</div>
